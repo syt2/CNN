@@ -1,0 +1,31 @@
+cuda: "0,1"
+model:
+    arch: resnet
+    depth: 50
+data:
+    dataset: imagenet
+#    train_dir: /gpfs/home/qlli/ywen/syt/dataset/ILSVRC/train
+#    val_dir: /gpfs/home/qlli/ywen/syt/dataset/ILSVRC/val
+    train_dir: /home/xliu/dataset/ILSVRC/train
+    val_dir: /home/xliu/dataset/ILSVRC/val
+    workers: 16
+training:
+#    runid:
+#    seed: 1337
+    epochs: 100
+    batch_size: 64
+    loss:
+        name: 'label_smooth'
+        smoothing: 0.1
+    optimizer:
+        name: 'sgd'
+        lr: 0.025  #for cifar, lr = 0.1 * batch_size / 128
+        weight_decay: 0.0005
+        momentum: 0.9
+    lr_schedule:
+        name: 'multi_step'
+        milestones: [30,60,90]
+        gamma: 0.1
+    save_interval: 1
+    resume: save_model.pkl
+    best_model: best_model.pkl

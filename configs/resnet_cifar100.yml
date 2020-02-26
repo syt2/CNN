@@ -1,0 +1,28 @@
+cuda: "1"
+model:
+    arch: cifarresnet
+    depth: 56
+data:
+    dataset: cifar100
+    train_dir: /home/xliu/dataset/CIFAR
+    val_dir: /home/xliu/dataset/CIFAR
+    workers: 8
+training:
+#    runid:
+#    seed: 1337
+    epochs: 200
+    batch_size: 128
+    loss:
+        name: 'cross_entropy'
+    optimizer:
+        name: 'sgd'
+        lr: 0.1  #for cifar, lr = 0.1 * batch_size / 128
+        weight_decay: 0.0005
+        momentum: 0.9
+    lr_schedule:
+        name: 'multi_step'
+        milestones: [100,150]
+        gamma: 0.1
+    save_interval: 5
+    resume: save_model.pkl
+    best_model: best_model.pkl
