@@ -15,4 +15,4 @@ Backup of code I used to train CNNs for image classification from scratch.
 - `ImageNet(2012)`
 
 ### Usage
-run `train.py`
+run `train.py`, `validata.py`, `test.py`

@@ -36,25 +36,25 @@ def validate(cfg):
         validate_epoch(val_loader, model, loss_fn, use_cuda)
 
 
-def validate_epoch(val_loader, model, loss_fn, use_cuda):
+def validate_epoch(val_loader, model, loss_fn, use_cuda, logger):
     losses = AverageMeter()
     top1 = AverageMeter()
     top5 = AverageMeter()
     model.eval()
     for i, (input, label) in enumerate(tqdm(val_loader)):
-        if use_cuda:
-            label = label.cuda()
-            input = input.cuda()
         with torch.no_grad():
+            if use_cuda:
+                label = label.cuda()
+                input = input.cuda()
             input_var = torch.autograd.Variable(input)
             label_var = torch.autograd.Variable(label)
-        output = model(input_var)
-        loss = loss_fn(output, label_var)
+            output = model(input_var)
+            loss = loss_fn(output, label_var)
         prec1, prec5 = accuracy(output.data, label, topk=(1, 5))
         losses.update(loss.data, input.size(0))
         top1.update(prec1, input.size(0))
         top5.update(prec5, input.size(0))
-    print('  **Test** Prec@1 {top1.avg:.3f} Prec@5 {top5.avg:.3f}'.format(top1=top1, top5=top5))
+    logger.info('  **Test** Prec@1 {top1.avg:.3f} Prec@5 {top5.avg:.3f}'.format(top1=top1, top5=top5))
     return top1.avg, losses.avg
 
 

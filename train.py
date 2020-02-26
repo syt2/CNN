@@ -178,14 +178,14 @@ def validate_epoch(val_loader, model, loss_fn, use_cuda, logger):
     top5 = AverageMeter()
     model.eval()
     for i, (input, label) in enumerate(tqdm(val_loader)):
-        if use_cuda:
-            label = label.cuda()
-            input = input.cuda()
         with torch.no_grad():
+            if use_cuda:
+                label = label.cuda()
+                input = input.cuda()
             input_var = torch.autograd.Variable(input)
             label_var = torch.autograd.Variable(label)
-        output = model(input_var)
-        loss = loss_fn(output, label_var)
+            output = model(input_var)
+            loss = loss_fn(output, label_var)
         prec1, prec5 = accuracy(output.data, label, topk=(1, 5))
         losses.update(loss.data, input.size(0))
         top1.update(prec1, input.size(0))
