@@ -8,6 +8,7 @@ Backup of code I used to train CNNs for image classification from scratch.
 - `pyyaml`
 - `tqdm`
 - `tensorboardX`
+- `pillow`
 
 ### Dataset
 - `CIFAR-10`
