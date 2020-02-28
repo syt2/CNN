@@ -7,6 +7,8 @@ import torchvision.transforms as transforms
 
 from PIL import Image
 
+torch.backends.cudnn.benchmark = True
+
 idx2label = {0: 'tench, Tinca tinca',
              1: 'goldfish, Carassius auratus',
              2: 'great white shark, white shark, man-eater, man-eating shark, Carcharodon carcharias',
