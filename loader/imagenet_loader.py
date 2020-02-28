@@ -27,7 +27,7 @@ def imagenet_val_dataloader(val_dir, batch_size=128, workers=8):
     trans = transforms.Compose(trans)
     val_set = datasets.ImageFolder(val_dir, transform=trans)
     val_loader = torch.utils.data.DataLoader(val_set,
-                                             batch_size=batch_size // 2, shuffle=False, num_workers=workers,
+                                             batch_size=batch_size, shuffle=False, num_workers=workers,
                                              pin_memory=True)
     return val_loader
 
