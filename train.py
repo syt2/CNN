@@ -85,7 +85,6 @@ def train(cfg, writer, logger):
     epoch_time = AverageMeter()
     for epoch in range(start_epoch, epochs):
         start_time = time.time()
-        scheduler.step(epoch)
         need_hour, need_mins, need_secs = convert_secs2time(epoch_time.avg * (epochs - epoch))
         need_time = '[Need: {:02d}:{:02d}:{:02d}]'.format(need_hour, need_mins, need_secs)
         logger.info('\n==>>{:s} [Epoch={:03d}/{:03d}] {:s} [learning_rate={:6.4f}]'.format(
@@ -94,8 +93,9 @@ def train(cfg, writer, logger):
                     )
         train_acc, train_los = train_epoch(train_loader, model, loss_fn, optimizer, use_cuda, logger)
         val_acc, val_los = validate_epoch(val_loader, model, loss_fn, use_cuda, logger)
-        is_best = recorder.update(epoch, train_los, train_acc, val_los, val_acc)
+        scheduler.step(epoch)
 
+        is_best = recorder.update(epoch, train_los, train_acc, val_los, val_acc)
         if is_best or epoch % save_interval == 0 or epoch == epochs - 1:  # save model (resume model and best model)
             save_checkpoint({
                 'epoch': epoch + 1,
