@@ -26,5 +26,4 @@ def get_loader(cfg):
         raise NotImplementedError("Dataset {} not implemented".format(loader_dataset))
 
     logger.info("Using {} with {} params".format(loader_dataset, loader_params))
-    print("dataset:", loader_dataset, " batch_size:", loader_batch_size)
     return key2loader[loader_dataset](**loader_params, batch_size=loader_batch_size)

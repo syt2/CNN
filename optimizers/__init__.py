@@ -27,5 +27,4 @@ def get_optimizer(params, cfg):
     if opt_name not in key2opt:
         raise NotImplementedError("Optimizer {} not implemented".format(opt_name))
     logger.info("Using {} optimizer with {} params".format(opt_name, opt_params))
-    print("lr:", opt_params["lr"])
     return key2opt[opt_name](params, **opt_params)

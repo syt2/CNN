@@ -11,10 +11,11 @@ from metrics import AverageMeter
 from utils import convert_state_dict, accuracy
 
 
-def validate(cfg):
+def validate(cfg, model_path):
     use_cuda = False
-    if cfg.get("cuda", None) is not None:
-        os.environ["CUDA_VISIBLE_DEVICES"] = cfg.get("cuda", None)
+    if cfg.get("cuda_visible_devices", None) is not None:
+        if cfg.get("cuda_visible_devices", None) != "all":
+            os.environ["CUDA_VISIBLE_DEVICES"] = cfg.get("cuda_visible_devices", None)
         use_cuda = torch.cuda.is_available()
 
     # Setup Dataloader
@@ -25,10 +26,9 @@ def validate(cfg):
     if use_cuda and torch.cuda.device_count() > 0:
         model = torch.nn.DataParallel(model, device_ids=list(range(torch.cuda.device_count())))
 
-    best_path = os.path.join(cfg["val"]["best_model"])
 
-    if os.path.isfile(best_path):
-        checkpoint = torch.load(best_path)
+    if os.path.isfile(model_path):
+        checkpoint = torch.load(model_path)
         # state = convert_state_dict(checkpoint["state_dict"])
         model.load_state_dict(checkpoint["state_dict"])
 
@@ -71,4 +71,10 @@ if __name__ == "__main__":
     with open(args.config) as fp:
         cfg = yaml.load(fp)
 
-    validate(cfg)
+    run_id = cfg["training"].get("runid", None)
+    if run_id is None:
+        raise Exception('In validate mode, the runid of the model directory cannot be empty')
+    logdir = os.path.join("runs", os.path.basename(args.config)[:-4], str(run_id))
+    model_path = os.path.join(logdir, cfg["training"]["best_model"])
+
+    validate(cfg, model_path=model_path)

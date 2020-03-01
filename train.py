@@ -24,8 +24,9 @@ torch.backends.cudnn.benchmark = True
 def train(cfg, writer, logger):
     # This statement must be declared before using torch
     use_cuda = False
-    if cfg.get("cuda", None) is not None:
-        os.environ["CUDA_VISIBLE_DEVICES"] = cfg.get("cuda", None)
+    if cfg.get("cuda_visible_devices", None) is not None:
+        if cfg.get("cuda_visible_devices", None) != "all":
+            os.environ["CUDA_VISIBLE_DEVICES"] = cfg.get("cuda_visible_devices", None)
         use_cuda = torch.cuda.is_available()
 
     # Setup seed
@@ -81,8 +82,6 @@ def train(cfg, writer, logger):
         else:
             logger.info("No checkpoint found at '{}'".format(resume_path))
 
-    # test_cuda_mem(train_loader, val_loader, model)  # 不用反向传播更新权重所以该时间不能用作参考,
-
     epoch_time = AverageMeter()
     for epoch in range(start_epoch, epochs):
         start_time = time.time()
@@ -115,27 +114,6 @@ def train(cfg, writer, logger):
         writer.add_scalar('Val/acc', val_acc, epoch)
 
         epoch_time.update(time.time() - start_time)
-
-
-# No backpropagation is used to update weights, so this time cannot be used as a reference.
-# This method is only used to test cuda memory
-def test_cuda_mem(train_loader, val_loader, model):
-    model.train()
-    for i, (input, label) in enumerate(train_loader):
-        if i > 16:
-            pass
-        input = input.cuda()
-        with torch.no_grad():
-            input_var = torch.autograd.Variable(input)
-        model(input_var)
-    model.eval()
-    for i, (input, label) in enumerate(val_loader):
-        if i > 16:
-            pass
-        input = input.cuda()
-        with torch.no_grad():
-            input_var = torch.autograd.Variable(input)
-        model(input_var)
 
 
 def train_epoch(train_loader, model, loss_fn, optimizer, use_cuda, logger):

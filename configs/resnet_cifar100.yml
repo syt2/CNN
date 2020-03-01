@@ -1,4 +1,4 @@
-cuda: "1"
+cuda: "0"
 model:
     arch: cifarresnet
     depth: 56
