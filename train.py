@@ -24,9 +24,9 @@ torch.backends.cudnn.benchmark = True
 def train(cfg, writer, logger):
     # This statement must be declared before using torch
     use_cuda = False
-    if cfg.get("cuda_visible_devices", None) is not None:
-        if cfg.get("cuda_visible_devices", None) != "all":
-            os.environ["CUDA_VISIBLE_DEVICES"] = cfg.get("cuda_visible_devices", None)
+    if cfg.get("cuda", None) is not None:
+        if cfg.get("cuda", None) != "all":
+            os.environ["CUDA_VISIBLE_DEVICES"] = cfg.get("cuda", None)
         use_cuda = torch.cuda.is_available()
 
     # Setup seed

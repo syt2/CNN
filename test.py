@@ -1029,9 +1029,9 @@ def get_img(img_path):
 def test(cfg, img_path, model_path):
     assert img_path is not None, 'Not assert img'
     use_cuda = False
-    if cfg.get("cuda_visible_devices", None) is not None:
-        if cfg.get("cuda_visible_devices", None) != "all":
-            os.environ["CUDA_VISIBLE_DEVICES"] = cfg.get("cuda_visible_devices", None)
+    if cfg.get("cuda", None) is not None:
+        if cfg.get("cuda", None) != "all":
+            os.environ["CUDA_VISIBLE_DEVICES"] = cfg.get("cuda", None)
         use_cuda = torch.cuda.is_available()
 
     # Setup Model

@@ -16,4 +16,7 @@ Backup of code I used to train CNNs for image classification from scratch.
 - `ImageNet(2012)`
 
 ### Usage
-run `train.py`, `validata.py`, `test.py`
+- Add configuration file under configs folder
+  - `runid` needs to be configured in validate mode and test mode to obtain the model's parameters file
+  - If `cuda` is not specified, model use cpu. `cuda` can be specified as `"all"` to use all the GPUs, or a list of GPUs, such as `"0,1"`
+- run `train.py`, `validate.py`, `test.py`
