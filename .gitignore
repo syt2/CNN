@@ -1,0 +1,6 @@
+/__pycache__
+/runs
+.idea
+*/__pycache__
+.DS_Store
+*/.DS_Store
