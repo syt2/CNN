@@ -88,12 +88,12 @@ def train(cfg, writer, logger):
         need_hour, need_mins, need_secs = convert_secs2time(epoch_time.avg * (epochs - epoch))
         need_time = '[Need: {:02d}:{:02d}:{:02d}]'.format(need_hour, need_mins, need_secs)
         logger.info('\n==>>{:s} [Epoch={:03d}/{:03d}] {:s} [learning_rate={:6.4f}]'.format(
-            time_string(), epoch, epochs, need_time, scheduler.get_lr()[0]) +
+            time_string(), epoch, epochs, need_time, optimizer.param_groups[0]['lr']) +  # or scheduler.get_last_lr() if pytorch >= 1.4
                     ' [Best : Accuracy={:.2f}]'.format(recorder.max_accuracy(False))
                     )
         train_acc, train_los = train_epoch(train_loader, model, loss_fn, optimizer, use_cuda, logger)
         val_acc, val_los = validate_epoch(val_loader, model, loss_fn, use_cuda, logger)
-        scheduler.step(epoch)
+        scheduler.step()
 
         is_best = recorder.update(epoch, train_los, train_acc, val_los, val_acc)
         if is_best or epoch % save_interval == 0 or epoch == epochs - 1:  # save model (resume model and best model)
