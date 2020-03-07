@@ -18,7 +18,7 @@ training:
     optimizer:
         name: 'sgd'
         lr: 0.1  #for imagenet, lr = 0.1 * batch_size / 256
-        weight_decay: 0.0005
+        weight_decay: 0.0001
         momentum: 0.9
     lr_schedule:
         name: 'multi_step'

@@ -1,6 +1,6 @@
-from model.ResNeXt import ResNeXt
-from model.CifarResNet import ResNet as CifarResnet
-from model.ResNet import ResNet
+from models.ResNeXt import ResNeXt
+from models.CifarResNet import ResNet as CifarResNet
+from models.ResNet import ResNet
 
 
 def get_model(cfg):
@@ -34,7 +34,7 @@ def _get_model_instance(name):
     try:
         return {
             "resnext": ResNeXt,
-            "cifarresnet": CifarResnet,
+            "cifarresnet": CifarResNet,
             "resnet": ResNet,
         }[name]
     except:

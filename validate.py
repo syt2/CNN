@@ -4,11 +4,13 @@ import argparse
 import os
 
 from tqdm import tqdm
-from model import get_model
-from loader import get_loader
-from loss import get_loss_fn
+from models import get_model
+from loaders import get_loader
+from losses import get_loss_fn
 from metrics import AverageMeter
 from utils import convert_state_dict, accuracy
+
+torch.backends.cudnn.benchmark = True
 
 
 def validate(cfg, model_path):
@@ -73,7 +75,7 @@ if __name__ == "__main__":
 
     run_id = cfg["training"].get("runid", None)
     if run_id is None:
-        raise Exception('In validate mode, the runid of the model directory cannot be empty')
+        raise Exception('In validate mode, the runid of the model directory in configs file must be specified')
     logdir = os.path.join("runs", os.path.basename(args.config)[:-4], str(run_id))
     model_path = os.path.join(logdir, cfg["training"]["best_model"])
 

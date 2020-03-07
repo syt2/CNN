@@ -8,9 +8,9 @@ import argparse
 import numpy as np
 
 from tqdm import tqdm
-from model import get_model
-from loss import get_loss_fn
-from loader import get_loader
+from models import get_model
+from losses import get_loss_fn
+from loaders import get_loader
 from utils import get_logger, convert_secs2time, time_string, accuracy, save_checkpoint
 from metrics import RecorderMeter, AverageMeter
 from schedulers import get_scheduler
@@ -87,10 +87,9 @@ def train(cfg, writer, logger):
         start_time = time.time()
         need_hour, need_mins, need_secs = convert_secs2time(epoch_time.avg * (epochs - epoch))
         need_time = '[Need: {:02d}:{:02d}:{:02d}]'.format(need_hour, need_mins, need_secs)
-        logger.info('\n==>>{:s} [Epoch={:03d}/{:03d}] {:s} [learning_rate={:6.4f}]'.format(
-            time_string(), epoch, epochs, need_time, optimizer.param_groups[0]['lr']) +  # or scheduler.get_last_lr() if pytorch >= 1.4
-                    ' [Best : Accuracy={:.2f}]'.format(recorder.max_accuracy(False))
-                    )
+        logger.info('\n==>>{:s} [Epoch={:03d}/{:03d}] {:s} [learning_rate={:8.6f}]'.format(
+            time_string(), epoch, epochs, need_time, optimizer.param_groups[0]['lr']) +  # scheduler.get_last_lr() >1.4
+                    ' [Best : Accuracy={:.2f}]'.format(recorder.max_accuracy(False)))
         train_acc, train_los = train_epoch(train_loader, model, loss_fn, optimizer, use_cuda, logger)
         val_acc, val_los = validate_epoch(val_loader, model, loss_fn, use_cuda, logger)
         scheduler.step()

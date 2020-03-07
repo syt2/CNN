@@ -1,7 +1,7 @@
 import logging
-from loader.cifar10_loader import cifar10_loader
-from loader.cifar100_loader import cifar100_loader
-from loader.imagenet_loader import imagenet_loader
+from loaders.cifar10_loader import cifar10_loader
+from loaders.cifar100_loader import cifar100_loader
+from loaders.imagenet_loader import imagenet_loader
 
 logger = logging.getLogger("CNN")
 

@@ -2,7 +2,7 @@ import logging
 import torch.nn as nn
 from torch.nn import CrossEntropyLoss
 
-from loss.loss_fn import (
+from losses.loss_fn import (
     LabelSmoothLoss,
 )
 

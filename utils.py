@@ -1,10 +1,6 @@
-"""
-Misc Utility functions
-"""
 import os
 import logging
 import datetime
-import numpy as np
 import time
 import torch
 import shutil

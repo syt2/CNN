@@ -2,7 +2,7 @@ import yaml
 import torch
 import argparse
 import os
-from model import get_model
+from models import get_model
 import torchvision.transforms as transforms
 
 from PIL import Image
@@ -1072,8 +1072,8 @@ if __name__ == "__main__":
 
     run_id = cfg["training"].get("runid", None)
     if run_id is None:
-        raise Exception('In test mode, the runid of the model directory cannot be empty')
+        raise Exception('In test mode, the runid of the model directory in configs file must be specified')
     logdir = os.path.join("runs", os.path.basename(args.config)[:-4], str(run_id))
     model_path = os.path.join(logdir, cfg["training"]["best_model"])
 
-    test(cfg, img_path='PATH/TO/IMG', model_path=model_path)
+    test(cfg, img_path='PATH/TO/IMG.JPG', model_path=model_path)
