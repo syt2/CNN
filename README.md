@@ -1,5 +1,5 @@
 # CNNs for image classification
-Backup of code I used to train CNNs for image classification from scratch.
+Back up of code I used to train CNNs for image classification from scratch.
 
 ### Requirement
 - `pytorch 1.1.0+`
@@ -13,7 +13,7 @@ Backup of code I used to train CNNs for image classification from scratch.
 ### Dataset
 - `CIFAR-10`
 - `CIFAR-100`
-- `ImageNet(2012)`
+- `ImageNet 2012`
 
 ### Usage
 - Add configuration file under `configs` folder
