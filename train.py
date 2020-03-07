@@ -42,7 +42,7 @@ def train(cfg, writer, logger):
 
     # Setup Model
     model = get_model(cfg)
-    writer.add_graph(model, torch.rand((1, 3, 224, 224)))
+    # writer.add_graph(model, torch.rand((1, 3, 224, 224)))
     if use_cuda and torch.cuda.device_count() > 0:
         model = torch.nn.DataParallel(model, device_ids=list(range(torch.cuda.device_count())))
 
