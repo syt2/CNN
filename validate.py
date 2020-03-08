@@ -25,7 +25,7 @@ def validate(cfg, model_path):
 
     # Setup Model
     model = get_model(cfg)
-    if use_cuda and torch.cuda.device_count() > 0:
+    if use_cuda and torch.cuda.device_count() > 1:
         model = torch.nn.DataParallel(model, device_ids=list(range(torch.cuda.device_count())))
 
 

@@ -1036,7 +1036,7 @@ def test(cfg, img_path, model_path):
 
     # Setup Model
     model = get_model(cfg)
-    if use_cuda and torch.cuda.device_count() > 0:
+    if use_cuda and torch.cuda.device_count() > 1:
         model = torch.nn.DataParallel(model, device_ids=list(range(torch.cuda.device_count())))
 
     if os.path.isfile(model_path):
