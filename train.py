@@ -16,7 +16,7 @@ from metrics import RecorderMeter, AverageMeter
 from schedulers import get_scheduler
 from optimizers import get_optimizer
 
-from tensorboardX import SummaryWriter
+from torch.utils.tensorboard import SummaryWriter
 
 torch.backends.cudnn.benchmark = True
 
@@ -186,7 +186,7 @@ if __name__ == "__main__":
 
     run_id = cfg["training"].get("runid", random.randint(1, 100000))
     logdir = os.path.join("runs", os.path.basename(args.config)[:-4], str(run_id))
-    writer = SummaryWriter(logdir=logdir)
+    writer = SummaryWriter(log_dir=logdir)
 
     print("RUNDIR: {}".format(logdir))
     shutil.copy(args.config, logdir)

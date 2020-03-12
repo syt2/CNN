@@ -2,12 +2,11 @@
 Back up of code I used to train CNNs for image classification from scratch.
 
 ### Requirement
-- `pytorch 1.1.0+`
+- `pytorch 1.4.0+`
 - `torchvision`
 - `numpy`
 - `pyyaml`
 - `tqdm`
-- `tensorboardX`
 - `pillow`
 
 ### Dataset
