@@ -5,6 +5,7 @@ Back up of code I used to train CNNs for image classification from scratch.
 - `pytorch 1.4.0+` (for tensorboard)
 - `torchvision`
 - `numpy`
+- `tensorboard 1.14+`
 - `pyyaml`
 - `tqdm`
 - `pillow`
