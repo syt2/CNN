@@ -2,7 +2,7 @@
 Back up of code I used to train CNNs for image classification from scratch.
 
 ### Requirement
-- `pytorch 1.4.0+`
+- `pytorch 1.4.0+` (for tensorboard)
 - `torchvision`
 - `numpy`
 - `pyyaml`
