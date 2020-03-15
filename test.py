@@ -4,6 +4,7 @@ import argparse
 import os
 from models import get_model
 import torchvision.transforms as transforms
+from utils import convert_state_dict
 
 from PIL import Image
 
@@ -1028,21 +1029,27 @@ def get_img(img_path):
 
 def test(cfg, img_path, model_path):
     assert img_path is not None, 'Not assert img'
+    assert model_path is not None, 'Not assert model path'
     use_cuda = False
     if cfg.get("cuda", None) is not None:
         if cfg.get("cuda", None) != "all":
             os.environ["CUDA_VISIBLE_DEVICES"] = cfg.get("cuda", None)
         use_cuda = torch.cuda.is_available()
 
-    # Setup Model
+    # Load Model
     model = get_model(cfg)
-    if use_cuda and torch.cuda.device_count() > 1:
-        model = torch.nn.DataParallel(model, device_ids=list(range(torch.cuda.device_count())))
-
-    if os.path.isfile(model_path):
+    if use_cuda:
+        model.cuda()
         checkpoint = torch.load(model_path)
-        # state = convert_state_dict(checkpoint["state_dict"])
-        model.load_state_dict(checkpoint["state_dict"])
+        if torch.cuda.device_count() > 1:  # multi gpus
+            model = torch.nn.DataParallel(model, device_ids=list(range(torch.cuda.device_count())))
+            state = checkpoint["state_dict"]
+        else:  # 1 gpu
+            state = convert_state_dict(checkpoint["state_dict"])
+    else:  # cpu
+        checkpoint = torch.load(model_path, map_location='cpu')
+        state = convert_state_dict(checkpoint["state_dict"])
+    model.load_state_dict(state)
 
     model.eval()
     input = get_img(img_path)  # read img
@@ -1072,8 +1079,8 @@ if __name__ == "__main__":
 
     run_id = cfg["training"].get("runid", None)
     if run_id is None:
-        raise Exception('In test mode, the runid of the model directory in configs file must be specified')
+        raise Exception('In test mode, the \033[1;35mrunid\033[0m of the model directory cannot be empty')
     logdir = os.path.join("runs", os.path.basename(args.config)[:-4], str(run_id))
     model_path = os.path.join(logdir, cfg["training"]["best_model"])
 
-    test(cfg, img_path='PATH/TO/IMG.JPG', model_path=model_path)
+    test(cfg, img_path='PATH/TO/IMG', model_path=model_path)

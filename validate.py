@@ -14,6 +14,7 @@ torch.backends.cudnn.benchmark = True
 
 
 def validate(cfg, model_path):
+    assert model_path is not None, 'Not assert model path'
     use_cuda = False
     if cfg.get("cuda", None) is not None:
         if cfg.get("cuda", None) != "all":
@@ -23,23 +24,28 @@ def validate(cfg, model_path):
     # Setup Dataloader
     train_loader, val_loader = get_loader(cfg)
 
-    # Setup Model
+    loss_fn = get_loss_fn(cfg)
+
+    # Load Model
     model = get_model(cfg)
-    if use_cuda and torch.cuda.device_count() > 1:
-        model = torch.nn.DataParallel(model, device_ids=list(range(torch.cuda.device_count())))
-
-
-    if os.path.isfile(model_path):
+    if use_cuda:
+        model.cuda()
+        loss_fn.cuda()
         checkpoint = torch.load(model_path)
-        # state = convert_state_dict(checkpoint["state_dict"])
-        model.load_state_dict(checkpoint["state_dict"])
+        if torch.cuda.device_count() > 1:  # multi gpus
+            model = torch.nn.DataParallel(model, device_ids=list(range(torch.cuda.device_count())))
+            state = checkpoint["state_dict"]
+        else:  # 1 gpu
+            state = convert_state_dict(checkpoint["state_dict"])
+    else:  # cpu
+        checkpoint = torch.load(model_path, map_location='cpu')
+        state = convert_state_dict(checkpoint["state_dict"])
+    model.load_state_dict(state)
 
-        loss_fn = get_loss_fn(cfg)
-        validate_epoch(val_loader, model, loss_fn, use_cuda)
+    validate_epoch(val_loader, model, loss_fn, use_cuda)
 
 
-def validate_epoch(val_loader, model, loss_fn, use_cuda, logger):
-    losses = AverageMeter()
+def validate_epoch(val_loader, model, loss_fn, use_cuda):
     top1 = AverageMeter()
     top5 = AverageMeter()
     model.eval()
@@ -53,11 +59,10 @@ def validate_epoch(val_loader, model, loss_fn, use_cuda, logger):
             output = model(input_var)
             loss = loss_fn(output, label_var)
         prec1, prec5 = accuracy(output.data, label, topk=(1, 5))
-        losses.update(loss.data, input.size(0))
         top1.update(prec1, input.size(0))
         top5.update(prec5, input.size(0))
-    logger.info('  **Test** Prec@1 {top1.avg:.3f} Prec@5 {top5.avg:.3f}'.format(top1=top1, top5=top5))
-    return top1.avg, losses.avg
+    print('  **Test** Prec@1 {top1.avg:.3f} Prec@5 {top5.avg:.3f}'.format(top1=top1, top5=top5))
+    return top1.avg
 
 
 if __name__ == "__main__":
@@ -75,7 +80,7 @@ if __name__ == "__main__":
 
     run_id = cfg["training"].get("runid", None)
     if run_id is None:
-        raise Exception('In validate mode, the runid of the model directory in configs file must be specified')
+        raise Exception('In validate mode, the \033[1;35mrunid\033[0m of the model directory in configs file must be specified')
     logdir = os.path.join("runs", os.path.basename(args.config)[:-4], str(run_id))
     model_path = os.path.join(logdir, cfg["training"]["best_model"])
 
