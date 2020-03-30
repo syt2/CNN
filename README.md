@@ -67,8 +67,8 @@ I also posted several pretrained weights below.
 | ResNeXt50 <br> (My Imp.) | ? | todo |
 | ResNeXt50 <br> ([paper](https://arxiv.org/abs/1611.05431)) | 22.2 | None |
 ||
-| SENet50 <br> (My Imp.) | 21.26 | [Google Drive](https://drive.google.com/open?id=1Oyyhb43Y2kbGjT1EEgal-cm8fYQAemuj)<br>[Baidu Netdisk](https://pan.baidu.com/s/1tyfin8SqftpmzYhMvU2wxw) |
-| SENet50 <br> ([paper](https://arxiv.org/abs/1709.01507)) | 20.79 | None |
+| SENet50 <br> (My Imp.) | 22.64 | [Google Drive](https://drive.google.com/open?id=1Oyyhb43Y2kbGjT1EEgal-cm8fYQAemuj)<br>[Baidu Netdisk](https://pan.baidu.com/s/1tyfin8SqftpmzYhMvU2wxw) |
+| SENet50 <br> ([paper](https://arxiv.org/abs/1709.01507)) | 23.29 | None |
 ||
 | SKNet50 <br> (My Imp.) | 21.26 | [Google Drive](https://drive.google.com/open?id=1h6NIwSemMrFDk4DWT7-Zdm9kolHljyZU)<br>[Baidu Netdisk](https://pan.baidu.com/s/1XTuMDqFuzljxmlfC2TKTyg) |
 | SKNet50 <br> ([paper](https://arxiv.org/abs/1903.06586)) | 20.79 | None |
