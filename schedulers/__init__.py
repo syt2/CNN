@@ -2,7 +2,7 @@ import logging
 
 from torch.optim.lr_scheduler import MultiStepLR, ExponentialLR, CosineAnnealingLR
 
-from schedulers.schedulers_fn import WarmUpLR, ConstantLR, PolynomialLR
+from schedulers.schedulers_fn import WarmUpLR, ConstantLR, PolynomialLR, LinerLR
 
 logger = logging.getLogger("CNN")
 
@@ -12,6 +12,7 @@ key2scheduler = {
     "multi_step": MultiStepLR,
     "cosine_annealing": CosineAnnealingLR,
     "exp_lr": ExponentialLR,
+    "liner_lr": LinerLR,
 }
 
 

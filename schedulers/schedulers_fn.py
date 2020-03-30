@@ -1,6 +1,16 @@
 from torch.optim.lr_scheduler import _LRScheduler
 
 
+class LinerLR(_LRScheduler):  # to train efficient arth. For simplicity, change lr by epoch not iteration
+    def __init__(self, optimizer, total_epoches, last_epoch=-1):
+        self.total_epoches = total_epoches
+        super(LinerLR, self).__init__(optimizer, last_epoch)
+
+    def get_lr(self):
+        return [base_lr * (1 - self.last_epoch / float(self.total_epoches))
+                for base_lr in self.base_lrs]
+
+
 class ConstantLR(_LRScheduler):
     def __init__(self, optimizer, last_epoch=-1):
         super(ConstantLR, self).__init__(optimizer, last_epoch)

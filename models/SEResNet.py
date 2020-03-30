@@ -1,28 +1,43 @@
+import torch
 import torch.nn as nn
 
 
-class Bottleneck(nn.Module):
-    def __init__(self, in_channels, mid_channels, out_channels, groups=32, stride=1):
-        super(Bottleneck, self).__init__()
-        self.conv1 = nn.Sequential(
-            nn.Conv2d(in_channels, mid_channels, kernel_size=1, stride=1, padding=0, bias=False),
-            nn.BatchNorm2d(mid_channels),
+class SE(nn.Module):
+    def __init__(self, channels, reduce=16):
+        super(SE, self).__init__()
+        self.se = nn.Sequential(
+            nn.AdaptiveAvgPool2d(1),
+            nn.Conv2d(channels, channels // reduce, kernel_size=1, stride=1, padding=0, bias=True),
             nn.ReLU(inplace=True),
-        )
-        self.conv2 = nn.Sequential(
-            nn.Conv2d(mid_channels, mid_channels, kernel_size=3, stride=stride, padding=1, groups=groups, bias=False),
-            nn.BatchNorm2d(mid_channels),
-            nn.ReLU(inplace=True),
-        )
-        self.conv3 = nn.Sequential(
-            nn.Conv2d(mid_channels, out_channels, kernel_size=1, stride=1, padding=0, bias=False),
-            nn.BatchNorm2d(out_channels),
-            nn.ReLU(inplace=True),
+            nn.Conv2d(channels // reduce, channels, kernel_size=1, stride=1, padding=0, bias=True),
+            nn.Sigmoid(),
         )
 
-        if in_channels == out_channels:
+    def forward(self, x):
+        return x * self.se(x)
+
+
+class Bottleneck(nn.Module):
+    def __init__(self, in_channels, mid_channels, out_channels, stride=1):
+        super(Bottleneck, self).__init__()
+        self.conv1 = nn.Sequential(
+            nn.Conv2d(in_channels, mid_channels, kernel_size=1, stride=1, bias=False),
+            nn.BatchNorm2d(mid_channels),
+            nn.ReLU(inplace=True)
+        )
+        self.conv2 = nn.Sequential(
+            nn.Conv2d(mid_channels, mid_channels, kernel_size=3, stride=stride, padding=1, bias=False),
+            nn.BatchNorm2d(mid_channels),
+            nn.ReLU(inplace=True)
+        )
+        self.conv3 = nn.Sequential(
+            nn.Conv2d(mid_channels, out_channels, kernel_size=1, stride=1, bias=False),
+            nn.BatchNorm2d(out_channels)
+        )
+        self.se = SE(out_channels)
+        if in_channels == out_channels:  # when dim not change, input_features could be added diectly to out
             self.shortcut = nn.Sequential()
-        else:
+        else:  # when dim change, input_features should also change dim to be added to out
             self.shortcut = nn.Sequential(
                 nn.Conv2d(in_channels, out_channels, kernel_size=1, stride=stride, bias=False),
                 nn.BatchNorm2d(out_channels)
@@ -36,23 +51,27 @@ class Bottleneck(nn.Module):
         x = self.conv1(x)
         x = self.conv2(x)
         x = self.conv3(x)
+        x = self.se(x)
         x += residual
+
         return self.relu(x)
 
 
-class resnext(nn.Module):
-    def __init__(self, num_classes, num_block_lists=[3, 4, 6, 3], groups=32):
-        super(resnext, self).__init__()
+class resnet(nn.Module):
+    def __init__(self, num_classes, num_block_lists=[3, 4, 6, 3]):
+        super(resnet, self).__init__()
         self.basic_conv = nn.Sequential(
             nn.Conv2d(3, 64, kernel_size=7, stride=2, padding=3, bias=False),
             nn.BatchNorm2d(64),
             nn.ReLU(inplace=True),
             nn.MaxPool2d(kernel_size=3, stride=2, padding=1)
         )
-        self.stage_1 = self._make_layer(64, 128, 256, nums_block=num_block_lists[0], stride=1)
-        self.stage_2 = self._make_layer(256, 256, 512, nums_block=num_block_lists[1], stride=2)
-        self.stage_3 = self._make_layer(512, 512, 1024, nums_block=num_block_lists[2], stride=2)
-        self.stage_4 = self._make_layer(1024, 1024, 2048, nums_block=num_block_lists[3], stride=2)
+
+        self.stage_1 = self._make_layer(64, 64, 256, nums_block=num_block_lists[0], stride=1)
+        self.stage_2 = self._make_layer(256, 128, 512, nums_block=num_block_lists[1], stride=2)
+        self.stage_3 = self._make_layer(512, 256, 1024, nums_block=num_block_lists[2], stride=2)
+        self.stage_4 = self._make_layer(1024, 512, 2048, nums_block=num_block_lists[3], stride=2)
+
         self.gap = nn.AdaptiveAvgPool2d(1)
         self.classifier = nn.Linear(2048, num_classes)
 
@@ -84,24 +103,25 @@ class resnext(nn.Module):
         return x
 
 
-def ResNeXt(num_classes=1000, depth=50):
-    assert depth in [50, 101], 'depth invalid'
+def ResNet(num_classes=1000, depth=18):
+    assert depth in [50, 101, 152], 'depth invalid'
     key2blocks = {
         50: [3, 4, 6, 3],
         101: [3, 4, 23, 3],
     }
-    model = resnext(num_classes, key2blocks[depth])
+    model = resnet(num_classes, key2blocks[depth])
     return model
 
 
-import torch
 if __name__ == '__main__':
-    batch = 2
-    inplanes = 3
-    outplanes = 1000
+    batch_size = 256
+    inc = 3
+    outc = 1000
     h, w = 224, 224
+    depth = 50
 
-    model = ResNeXt(outplanes, depth=50)
-    x = torch.rand((batch, inplanes, h, w))
-    model(x)
+    from pytorch_model_summary.model_summary import model_summary
+
+    model = ResNet(outc, depth=depth)
     print(model)
+    print(model_summary(model, (inc, h, w)))

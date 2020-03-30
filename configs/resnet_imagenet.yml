@@ -4,8 +4,8 @@ model:
     depth: 50
 data:
     dataset: imagenet
-    train_dir: /home/xliu/dataset/ILSVRC/train
-    val_dir: /home/xliu/dataset/ILSVRC/val
+    train_dir: /PATH/TO/ILSVRC/train
+    val_dir: /PATH/TO/ILSVRC/val
     workers: 16
 training:
 #    runid: xxxxx

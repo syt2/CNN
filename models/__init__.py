@@ -1,6 +1,8 @@
 from models.ResNeXt import ResNeXt
 from models.CifarResNet import ResNet as CifarResNet
 from models.ResNet import ResNet
+from models.SEResNet import ResNet as SEResNet
+from models.BasicResNet import ResNet as BasicResNet
 
 
 def get_model(cfg):
@@ -36,6 +38,8 @@ def _get_model_instance(name):
             "resnext": ResNeXt,
             "cifarresnet": CifarResNet,
             "resnet": ResNet,
+            "seresnet": SEResNet,
+            "basicresnet": BasicResNet,
         }[name]
     except:
         raise ("Model {} not available".format(name))

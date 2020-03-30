@@ -4,8 +4,8 @@ model:
     depth: 56
 data:
     dataset: cifar100
-    train_dir: /home/xliu/dataset/CIFAR
-    val_dir: /home/xliu/dataset/CIFAR
+    train_dir: /PATH/TO/CIFAR
+    val_dir: /PATH/TO/CIFAR
     workers: 8
 training:
 #    runid:
