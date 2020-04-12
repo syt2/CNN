@@ -64,7 +64,7 @@ I also posted several pretrained weights below.
 | ResNet50 <br> (My Imp.)| 23.30 | [Google Drive](https://drive.google.com/open?id=1XreMz36IpUiEDsJtyU7t_QPKOs4JTB_C)<br>[Baidu Netdisk](https://pan.baidu.com/s/197FBBOgYPc1oxEsDkeo4Rg) |
 | ResNet50 <br> ([paper](https://arxiv.org/abs/1512.03385))| 24.7 | None |
 ||
-| ResNeXt50 <br> (My Imp.) | ? | todo |
+| ResNeXt50 <br> (My Imp.) | 22.35 | [Google Drive](https://drive.google.com/open?id=1lI8Hi-XvJ42aBastq6FI3DhKU2sK92FH)<br>[Baidu Netdisk](https://pan.baidu.com/s/1t3gkJjPxfRFWWuE_C4U5rw) |
 | ResNeXt50 <br> ([paper](https://arxiv.org/abs/1611.05431)) | 22.2 | None |
 ||
 | SENet50 <br> (My Imp.) | 22.64 | [Google Drive](https://drive.google.com/open?id=1Oyyhb43Y2kbGjT1EEgal-cm8fYQAemuj)<br>[Baidu Netdisk](https://pan.baidu.com/s/1tyfin8SqftpmzYhMvU2wxw) |
@@ -73,8 +73,15 @@ I also posted several pretrained weights below.
 | SKNet50 <br> (My Imp.) | 21.26 | [Google Drive](https://drive.google.com/open?id=1h6NIwSemMrFDk4DWT7-Zdm9kolHljyZU)<br>[Baidu Netdisk](https://pan.baidu.com/s/1XTuMDqFuzljxmlfC2TKTyg) |
 | SKNet50 <br> ([paper](https://arxiv.org/abs/1903.06586)) | 20.79 | None |
 ||
+||
+| MobileNet V2 1x <br> (My Imp.) | 28.09 | [Google Drive](https://drive.google.com/open?id=18HMPfrhdFO2PRHVrm8PMZFDNJZ1QeMKB)<br>[Baidu Netdisk](https://pan.baidu.com/s/1t3gkJjPxfRFWWuE_C4U5rw) |
+| MobileNet V2 1x <br> ([paper](https://arxiv.org/abs/1801.04381)) | 28.2 | None |
+||
 
-During my training, I use label smooth loss. Everything else is the same as the paper.
+The hyperparameters and settings during my training for ResNet, ResNeXt, SENet, SKNet are the same as the paper, except I use **label smooth** loss.
+
+And for MobileNet V2, I follow the configuration in [this project](https://github.com/d-li14/mobilenetv2.pytorch#training).
+
 
 #### Pretrained weights usage
 1. place the downloaded pretrained model in `runs/aaaa/xxxx` folder under this project, 

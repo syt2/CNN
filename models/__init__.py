@@ -3,6 +3,7 @@ from models.CifarResNet import ResNet as CifarResNet
 from models.ResNet import ResNet
 from models.SEResNet import ResNet as SEResNet
 from models.BasicResNet import ResNet as BasicResNet
+from models.MobileNetV2 import mobilenet_v2 as MobileNetV2
 
 
 def get_model(cfg):
@@ -40,6 +41,7 @@ def _get_model_instance(name):
             "resnet": ResNet,
             "seresnet": SEResNet,
             "basicresnet": BasicResNet,
+            "mobilenetv2": MobileNetV2,
         }[name]
     except:
         raise ("Model {} not available".format(name))
