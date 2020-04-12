@@ -74,7 +74,7 @@ I also posted several pretrained weights below.
 | SKNet50 <br> ([paper](https://arxiv.org/abs/1903.06586)) | 20.79 | None |
 ||
 ||
-| MobileNet V2 1x <br> (My Imp.) | 28.09 | [Google Drive](https://drive.google.com/open?id=18HMPfrhdFO2PRHVrm8PMZFDNJZ1QeMKB)<br>[Baidu Netdisk](https://pan.baidu.com/s/1t3gkJjPxfRFWWuE_C4U5rw) |
+| MobileNet V2 1x <br> (My Imp.) | 28.09 | [Google Drive](https://drive.google.com/open?id=18HMPfrhdFO2PRHVrm8PMZFDNJZ1QeMKB)<br>[Baidu Netdisk](https://pan.baidu.com/s/1yKD_2IEuEw8cZ9N4gkg6UA) |
 | MobileNet V2 1x <br> ([paper](https://arxiv.org/abs/1801.04381)) | 28.2 | None |
 ||
 
