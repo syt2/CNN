@@ -80,7 +80,7 @@ I also posted several pretrained weights below.
 
 The hyperparameters and settings during my training for ResNet, ResNeXt, SENet, SKNet are the same as the paper, except I use **label smooth** loss.
 
-And for MobileNet V2, I follow the configuration in [this project](https://github.com/d-li14/mobilenetv2.pytorch#training).
+And for MobileNet V2, I follow the configuration in [this project](https://github.com/d-li14/mobilenetv2.pytorch#training), and use **label smooth** loss too.
 
 
 #### Pretrained weights usage
