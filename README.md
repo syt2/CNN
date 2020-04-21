@@ -59,22 +59,26 @@ I also posted several pretrained weights below.
 
 | Architecture | Top-1 error | Pretrained model|
 | :----: | :----: | :----: |
-| ResNet18 <br> (My Imp.)| 29.72 | [Google Drive](https://drive.google.com/open?id=1Sw9TUBtgRQDLNxpJupMnv6FTtOKgnlxI)<br>[Baidu Netdisk](https://pan.baidu.com/s/1fPsWBkb_Lh_bniYmt7DL-w) |
+| ResNet18 <br> (My Imp.)| 29.72 | [Google Drive](https://drive.google.com/open?id=1Sw9TUBtgRQDLNxpJupMnv6FTtOKgnlxI) <br>[Baidu Netdisk](https://pan.baidu.com/s/1fPsWBkb_Lh_bniYmt7DL-w) |
 | ResNet18 <br> ([paper](https://arxiv.org/abs/1512.03385))| 30.43 | None |
-| ResNet50 <br> (My Imp.)| 23.30 | [Google Drive](https://drive.google.com/open?id=1XreMz36IpUiEDsJtyU7t_QPKOs4JTB_C)<br>[Baidu Netdisk](https://pan.baidu.com/s/197FBBOgYPc1oxEsDkeo4Rg) |
+| ResNet50 <br> (My Imp.)| 23.30 | [Google Drive](https://drive.google.com/open?id=1XreMz36IpUiEDsJtyU7t_QPKOs4JTB_C) <br>[Baidu Netdisk](https://pan.baidu.com/s/197FBBOgYPc1oxEsDkeo4Rg) |
 | ResNet50 <br> ([paper](https://arxiv.org/abs/1512.03385))| 24.7 | None |
+| ResNet101 <br> (My Imp.)| 22.18 | [Google Drive](https://drive.google.com/open?id=1Vrfl-Z590jGcFIn1-7Cz9lfgqD1sJ1hm) |
+| ResNet101 <br> ([paper](https://arxiv.org/abs/1512.03385))| 22.44 | None |
 ||
-| ResNeXt50 <br> (My Imp.) | 22.35 | [Google Drive](https://drive.google.com/open?id=1lI8Hi-XvJ42aBastq6FI3DhKU2sK92FH)<br>[Baidu Netdisk](https://pan.baidu.com/s/1t3gkJjPxfRFWWuE_C4U5rw) |
+| ResNeXt50 <br> (My Imp.) | 22.35 | [Google Drive](https://drive.google.com/open?id=1lI8Hi-XvJ42aBastq6FI3DhKU2sK92FH) <br>[Baidu Netdisk](https://pan.baidu.com/s/1t3gkJjPxfRFWWuE_C4U5rw) |
 | ResNeXt50 <br> ([paper](https://arxiv.org/abs/1611.05431)) | 22.2 | None |
 ||
-| SENet50 <br> (My Imp.) | 22.64 | [Google Drive](https://drive.google.com/open?id=1Oyyhb43Y2kbGjT1EEgal-cm8fYQAemuj)<br>[Baidu Netdisk](https://pan.baidu.com/s/1tyfin8SqftpmzYhMvU2wxw) |
+| SENet50 <br> (My Imp.) | 22.64 | [Google Drive](https://drive.google.com/open?id=1Oyyhb43Y2kbGjT1EEgal-cm8fYQAemuj) <br>[Baidu Netdisk](https://pan.baidu.com/s/1tyfin8SqftpmzYhMvU2wxw) |
 | SENet50 <br> ([paper](https://arxiv.org/abs/1709.01507)) | 23.29 | None |
 ||
-| SKNet50 <br> (My Imp.) | 21.26 | [Google Drive](https://drive.google.com/open?id=1h6NIwSemMrFDk4DWT7-Zdm9kolHljyZU)<br>[Baidu Netdisk](https://pan.baidu.com/s/1XTuMDqFuzljxmlfC2TKTyg) |
+| SKNet50 <br> (My Imp.) | 21.26 | [Google Drive](https://drive.google.com/open?id=1h6NIwSemMrFDk4DWT7-Zdm9kolHljyZU) <br>[Baidu Netdisk](https://pan.baidu.com/s/1XTuMDqFuzljxmlfC2TKTyg) |
 | SKNet50 <br> ([paper](https://arxiv.org/abs/1903.06586)) | 20.79 | None |
 ||
 ||
-| MobileNet V2 1x <br> (My Imp.) | 28.09 | [Google Drive](https://drive.google.com/open?id=18HMPfrhdFO2PRHVrm8PMZFDNJZ1QeMKB)<br>[Baidu Netdisk](https://pan.baidu.com/s/1yKD_2IEuEw8cZ9N4gkg6UA) |
+| MobileNet V2 0.5x <br> (My Imp.) | 35.62 | [Google Drive](https://drive.google.com/open?id=1Ve2EuZPOZIEPZulQaNXHQb0Xl6trcSby) |
+| MobileNet V2 0.5x <br> ([paper](https://arxiv.org/abs/1801.04381)) | 34.6 | None |
+| MobileNet V2 1x <br> (My Imp.) | 28.09 | [Google Drive](https://drive.google.com/open?id=18HMPfrhdFO2PRHVrm8PMZFDNJZ1QeMKB) <br>[Baidu Netdisk](https://pan.baidu.com/s/1yKD_2IEuEw8cZ9N4gkg6UA) |
 | MobileNet V2 1x <br> ([paper](https://arxiv.org/abs/1801.04381)) | 28.2 | None |
 ||
 
