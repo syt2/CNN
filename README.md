@@ -84,6 +84,7 @@ I also posted several pretrained weights below.
 | MobileNet V3 large <br> (My Imp.) | 26.79 | [Google Drive](https://drive.google.com/file/d/1-bPoxyg9FEczBXjoJZJZiPmYAdOm2iQs) |
 | MobileNet V3 large <br> ([paper](https://arxiv.org/abs/1905.02244)) | 24.8 | None |
 ||
+
 The hyperparameters and settings during my training for ResNet, ResNeXt, SENet, SKNet are the same as the paper, except I use **label smooth** loss.
 
 And for MobileNet V2 and MobileNet V3, I follow the configuration in [this project](https://github.com/d-li14/mobilenetv2.pytorch#training), and use **label smooth** loss too.
