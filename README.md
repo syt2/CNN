@@ -77,9 +77,9 @@ I also posted several pretrained weights below.
 ||
 ||
 | MobileNet V2 0.5x <br> (My Imp.) | 35.62 | [Google Drive](https://drive.google.com/open?id=1Ve2EuZPOZIEPZulQaNXHQb0Xl6trcSby) |
-| MobileNet V2 0.5x <br> ([paper](https://arxiv.org/abs/1801.04381)) | 34.6 | None |
+| MobileNet V2 0.5x <br> ([paper](https://arxiv.org/abs/1801.04381)) | 35.6 | None |
 | MobileNet V2 1x <br> (My Imp.) | 28.09 | [Google Drive](https://drive.google.com/open?id=18HMPfrhdFO2PRHVrm8PMZFDNJZ1QeMKB) <br>[Baidu Netdisk](https://pan.baidu.com/s/1yKD_2IEuEw8cZ9N4gkg6UA) |
-| MobileNet V2 1x <br> ([paper](https://arxiv.org/abs/1801.04381)) | 28.2 | None |
+| MobileNet V2 1x <br> ([paper](https://arxiv.org/abs/1801.04381)) | 28.0 | None |
 ||
 | MobileNet V3 large <br> (My Imp.) | 26.79 | [Google Drive](https://drive.google.com/file/d/1-bPoxyg9FEczBXjoJZJZiPmYAdOm2iQs) |
 | MobileNet V3 large <br> ([paper](https://arxiv.org/abs/1905.02244)) | 24.8 | None |
