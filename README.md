@@ -81,10 +81,12 @@ I also posted several pretrained weights below.
 | MobileNet V2 1x <br> (My Imp.) | 28.09 | [Google Drive](https://drive.google.com/open?id=18HMPfrhdFO2PRHVrm8PMZFDNJZ1QeMKB) <br>[Baidu Netdisk](https://pan.baidu.com/s/1yKD_2IEuEw8cZ9N4gkg6UA) |
 | MobileNet V2 1x <br> ([paper](https://arxiv.org/abs/1801.04381)) | 28.2 | None |
 ||
-
+| MobileNet V3 large <br> (My Imp.) | 26.79 | [Google Drive](https://drive.google.com/file/d/1-bPoxyg9FEczBXjoJZJZiPmYAdOm2iQs) |
+| MobileNet V3 large <br> ([paper](https://arxiv.org/abs/1905.02244)) | 24.8 | None |
+||
 The hyperparameters and settings during my training for ResNet, ResNeXt, SENet, SKNet are the same as the paper, except I use **label smooth** loss.
 
-And for MobileNet V2, I follow the configuration in [this project](https://github.com/d-li14/mobilenetv2.pytorch#training), and use **label smooth** loss too.
+And for MobileNet V2 and MobileNet V3, I follow the configuration in [this project](https://github.com/d-li14/mobilenetv2.pytorch#training), and use **label smooth** loss too.
 
 
 #### Pretrained weights usage
