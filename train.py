@@ -57,7 +57,7 @@ def train(cfg, writer, logger):
     start_epoch = 0
 
     # save model parameters every <n> epochs
-    save_interval = cfg["training"]["save_interval"]
+    save_interval = cfg["training"].get("save_interval", 1)
 
     if use_cuda:
         model.cuda()

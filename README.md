@@ -1,7 +1,7 @@
 # CNNs for image classification
-Back up of code I used to train CNNs for image classification from scratch.
+Train CNNs for image classification from scratch.
 
-I also posted several pretrained weights below.
+I post several pretrained weights below.
 
 ### Requirement
 - `pytorch 1.4.0+`
@@ -31,7 +31,6 @@ I also posted several pretrained weights below.
         workers: 16
     training:
         runid: xxxxx  # recommended specified during validation and testing
-        # seed: 1337
         epochs: 100
         batch_size: 256
         loss:
@@ -57,37 +56,37 @@ I also posted several pretrained weights below.
     
 ### Pretrained Model on ImageNet 2012
 
-| Architecture | Top-1 error | Pretrained model|
-| :----: | :----: | :----: |
-| ResNet18 <br> (My Imp.)| 29.72 | [Google Drive](https://drive.google.com/open?id=1Sw9TUBtgRQDLNxpJupMnv6FTtOKgnlxI) <br>[Baidu Netdisk](https://pan.baidu.com/s/1fPsWBkb_Lh_bniYmt7DL-w) |
-| ResNet18 <br> ([paper](https://arxiv.org/abs/1512.03385))| 30.43 | None |
-| ResNet50 <br> (My Imp.)| 23.30 | [Google Drive](https://drive.google.com/open?id=1XreMz36IpUiEDsJtyU7t_QPKOs4JTB_C) <br>[Baidu Netdisk](https://pan.baidu.com/s/197FBBOgYPc1oxEsDkeo4Rg) |
-| ResNet50 <br> ([paper](https://arxiv.org/abs/1512.03385))| 24.7 | None |
-| ResNet101 <br> (My Imp.)| 22.18 | [Google Drive](https://drive.google.com/open?id=1Vrfl-Z590jGcFIn1-7Cz9lfgqD1sJ1hm) |
-| ResNet101 <br> ([paper](https://arxiv.org/abs/1512.03385))| 22.44 | None |
+| Architecture | Top-1 error | Params | FLOPs | Pretrained weights |
+| :----: | :----: | :----: |:----: | :----: |
+| ResNet18 <br> (My Imp.)| 29.72 | 11.69M | 1.82G | [Google Drive](https://drive.google.com/open?id=1Sw9TUBtgRQDLNxpJupMnv6FTtOKgnlxI) <br>[Baidu Netdisk](https://pan.baidu.com/s/1fPsWBkb_Lh_bniYmt7DL-w) |
+| ResNet18 <br> ([paper](https://arxiv.org/abs/1512.03385))| 30.43 | - | - | - |
+| ResNet50 <br> (My Imp.)| 23.30 | 25.56M | 4.11G | [Google Drive](https://drive.google.com/open?id=1XreMz36IpUiEDsJtyU7t_QPKOs4JTB_C) <br>[Baidu Netdisk](https://pan.baidu.com/s/197FBBOgYPc1oxEsDkeo4Rg) |
+| ResNet50 <br> ([paper](https://arxiv.org/abs/1512.03385))| 24.7 | - | - | - |
+| ResNet101 <br> (My Imp.)| 22.18 | 44.55M | 7.84G | [Google Drive](https://drive.google.com/open?id=1Vrfl-Z590jGcFIn1-7Cz9lfgqD1sJ1hm) |
+| ResNet101 <br> ([paper](https://arxiv.org/abs/1512.03385))| 22.44 | - | - | - |
 ||
-| ResNeXt50 <br> (My Imp.) | 22.35 | [Google Drive](https://drive.google.com/open?id=1lI8Hi-XvJ42aBastq6FI3DhKU2sK92FH) <br>[Baidu Netdisk](https://pan.baidu.com/s/1t3gkJjPxfRFWWuE_C4U5rw) |
-| ResNeXt50 <br> ([paper](https://arxiv.org/abs/1611.05431)) | 22.2 | None |
+| ResNeXt50 <br> (My Imp.) | 22.35 | 25.03M | 4.26G | [Google Drive](https://drive.google.com/open?id=1lI8Hi-XvJ42aBastq6FI3DhKU2sK92FH) <br>[Baidu Netdisk](https://pan.baidu.com/s/1t3gkJjPxfRFWWuE_C4U5rw) |
+| ResNeXt50 <br> ([paper](https://arxiv.org/abs/1611.05431)) | 22.2 | - | - | - |
 ||
-| SENet50 <br> (My Imp.) | 22.64 | [Google Drive](https://drive.google.com/open?id=1Oyyhb43Y2kbGjT1EEgal-cm8fYQAemuj) <br>[Baidu Netdisk](https://pan.baidu.com/s/1tyfin8SqftpmzYhMvU2wxw) |
-| SENet50 <br> ([paper](https://arxiv.org/abs/1709.01507)) | 23.29 | None |
+| SENet50 <br> (My Imp.) | 22.64 | 28.09M | 4.12G | [Google Drive](https://drive.google.com/open?id=1Oyyhb43Y2kbGjT1EEgal-cm8fYQAemuj) <br>[Baidu Netdisk](https://pan.baidu.com/s/1tyfin8SqftpmzYhMvU2wxw) |
+| SENet50 <br> ([paper](https://arxiv.org/abs/1709.01507)) | 23.29 | - | - | - |
 ||
-| SKNet50 <br> (My Imp.) | 21.26 | [Google Drive](https://drive.google.com/open?id=1h6NIwSemMrFDk4DWT7-Zdm9kolHljyZU) <br>[Baidu Netdisk](https://pan.baidu.com/s/1XTuMDqFuzljxmlfC2TKTyg) |
-| SKNet50 <br> ([paper](https://arxiv.org/abs/1903.06586)) | 20.79 | None |
+| SKNet50 <br> (My Imp.) | 21.26 | 27.49M | 4.50G | [Google Drive](https://drive.google.com/open?id=1h6NIwSemMrFDk4DWT7-Zdm9kolHljyZU) <br>[Baidu Netdisk](https://pan.baidu.com/s/1XTuMDqFuzljxmlfC2TKTyg) |
+| SKNet50 <br> ([paper](https://arxiv.org/abs/1903.06586)) | 20.79 | - | - | - |
 ||
 ||
-| MobileNet V2 0.5x <br> (My Imp.) | 35.62 | [Google Drive](https://drive.google.com/open?id=1Ve2EuZPOZIEPZulQaNXHQb0Xl6trcSby) |
-| MobileNet V2 0.5x <br> ([paper](https://arxiv.org/abs/1801.04381)) | 35.6 | None |
-| MobileNet V2 1x <br> (My Imp.) | 28.09 | [Google Drive](https://drive.google.com/open?id=18HMPfrhdFO2PRHVrm8PMZFDNJZ1QeMKB) <br>[Baidu Netdisk](https://pan.baidu.com/s/1yKD_2IEuEw8cZ9N4gkg6UA) |
-| MobileNet V2 1x <br> ([paper](https://arxiv.org/abs/1801.04381)) | 28.0 | None |
+| MobileNet V2 0.5x <br> (My Imp.) | 35.62 | 1.97M | 138.46M | [Google Drive](https://drive.google.com/open?id=1Ve2EuZPOZIEPZulQaNXHQb0Xl6trcSby) |
+| MobileNet V2 0.5x <br> ([paper](https://arxiv.org/abs/1801.04381)) | 35.6 | - | - | - |
+| MobileNet V2 1x <br> (My Imp.) | 28.09 | 3.50M | 315.41M | [Google Drive](https://drive.google.com/open?id=18HMPfrhdFO2PRHVrm8PMZFDNJZ1QeMKB) <br>[Baidu Netdisk](https://pan.baidu.com/s/1yKD_2IEuEw8cZ9N4gkg6UA) |
+| MobileNet V2 1x <br> ([paper](https://arxiv.org/abs/1801.04381)) | 28.0 | - | - | - |
 ||
-| MobileNet V3 large <br> (My Imp.) | 26.79 | [Google Drive](https://drive.google.com/file/d/1-bPoxyg9FEczBXjoJZJZiPmYAdOm2iQs) |
-| MobileNet V3 large <br> ([paper](https://arxiv.org/abs/1905.02244)) | 24.8 | None |
+| MobileNet V3 large <br> (My Imp.) | 26.79 | 5.48M | 230.05M | [Google Drive](https://drive.google.com/file/d/1-bPoxyg9FEczBXjoJZJZiPmYAdOm2iQs) |
+| MobileNet V3 large <br> ([paper](https://arxiv.org/abs/1905.02244)) | 24.8 | - | - | - |
 ||
 
 The hyperparameters and settings during my training for ResNet, ResNeXt, SENet, SKNet are the same as the paper, except I use **label smooth** loss.
 
-And for MobileNet V2 and MobileNet V3, I follow the configuration in [this project](https://github.com/d-li14/mobilenetv2.pytorch#training), and use **label smooth** loss too.
+And for MobileNet V2 and MobileNet V3, I follow the setup in [this project](https://github.com/d-li14/mobilenetv2.pytorch#training), and use **label smooth** loss too.
 
 
 #### Pretrained weights usage
