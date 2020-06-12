@@ -30,7 +30,7 @@ I post several pretrained weights below.
         val_dir: /PATH/TO/ILSVRC/val
         workers: 16
     training:
-        runid: xxxxx  # recommended specified during validation and testing
+        runid: xxxx  # recommended specified during validation and testing
         epochs: 100
         batch_size: 256
         loss:
@@ -51,7 +51,7 @@ I post several pretrained weights below.
     ```
 - run `train.py`, `validate.py` or `test.py` as follows
   - ```shell script
-    python train.py --config configs/xxxx.yml
+    python train.py --config configs/aaaa.yml
     ``` 
     
 ### Pretrained Model on ImageNet 2012
@@ -91,6 +91,6 @@ And for MobileNet V2 and MobileNet V3, I follow the setup in [this project](http
 
 #### Pretrained weights usage
 1. place the downloaded pretrained model in `runs/aaaa/xxxx` folder under this project, 
-where `aaaa` is the name of configuration file and `xxxx` is **runid** in configuration file, like `86028`
+where `aaaa` is the name of configuration file and `xxxx` is **runid** in configuration file.
 2. run `validate.py` or `test.py` as above.
 
