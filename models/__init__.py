@@ -4,7 +4,7 @@ from models.ResNet import ResNet
 from models.SEResNet import ResNet as SEResNet
 from models.BasicResNet import ResNet as BasicResNet
 from models.MobileNetV2 import mobilenet_v2 as MobileNetV2
-
+from models.CBAM import ResNet as CBAM
 
 def get_model(cfg):
     assert cfg["model"] is not None, "model is unspecified"
@@ -42,6 +42,7 @@ def _get_model_instance(name):
             "seresnet": SEResNet,
             "basicresnet": BasicResNet,
             "mobilenetv2": MobileNetV2,
+            "cbam": CBAM,
         }[name]
     except:
         raise ("Model {} not available".format(name))

@@ -68,8 +68,11 @@ I post several pretrained weights below.
 | ResNeXt50 <br> (My Imp.) | 22.35 | 25.03M | 4.26G | [Google Drive](https://drive.google.com/open?id=1lI8Hi-XvJ42aBastq6FI3DhKU2sK92FH) <br>[Baidu Netdisk](https://pan.baidu.com/s/1t3gkJjPxfRFWWuE_C4U5rw) |
 | ResNeXt50 <br> ([paper](https://arxiv.org/abs/1611.05431)) | 22.2 | - | - | - |
 ||
-| SENet50 <br> (My Imp.) | 22.64 | 28.09M | 4.12G | [Google Drive](https://drive.google.com/open?id=1Oyyhb43Y2kbGjT1EEgal-cm8fYQAemuj) <br>[Baidu Netdisk](https://pan.baidu.com/s/1tyfin8SqftpmzYhMvU2wxw) |
-| SENet50 <br> ([paper](https://arxiv.org/abs/1709.01507)) | 23.29 | - | - | - |
+| SE ResNet50 <br> (My Imp.) | 22.64 | 28.09M | 4.12G | [Google Drive](https://drive.google.com/open?id=1Oyyhb43Y2kbGjT1EEgal-cm8fYQAemuj) <br>[Baidu Netdisk](https://pan.baidu.com/s/1tyfin8SqftpmzYhMvU2wxw) |
+| SE ResNet50 <br> ([paper](https://arxiv.org/abs/1709.01507)) | 23.29 | - | - | - |
+||
+| CBAM ResNet50 <br> (My Imp.) | 22.40 | 28.07M | 4.13G | [Google Drive](https://drive.google.com/file/d/1SXxVdgBmnUTeXeHHXmTtHWquess9agiR) |
+| CBAM ResNet50 <br> ([paper](https://arxiv.org/abs/1807.06521)) | 22.66 | - | - | - |
 ||
 | SKNet50 <br> (My Imp.) | 21.26 | 27.49M | 4.50G | [Google Drive](https://drive.google.com/open?id=1h6NIwSemMrFDk4DWT7-Zdm9kolHljyZU) <br>[Baidu Netdisk](https://pan.baidu.com/s/1XTuMDqFuzljxmlfC2TKTyg) |
 | SKNet50 <br> ([paper](https://arxiv.org/abs/1903.06586)) | 20.79 | - | - | - |
